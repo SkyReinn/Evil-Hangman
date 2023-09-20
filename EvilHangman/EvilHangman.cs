@@ -7,7 +7,7 @@ public class EvilHangman
     public static void Hangman()
     {
         // Define variables
-        string path = @"C:\Users\David Wang\Desktop\Projects\App Development\Unit1\Unit1\resources\dictionary.txt";
+        string path = @"C:\Users\David Wang\Desktop\Projects\Evil-Hangman\EvilHangman\dictionary.txt";
         List<string> dictionaryWords = new List<string>();
 
         // Read dictionary words
