@@ -53,7 +53,7 @@ public class EvilHangman
         while(guesses != 0)
         {
             // Prompt player to guess a letter
-            Console.WriteLine("You have {0} chances left, please guess a letter:", guesses);
+            Console.WriteLine("You have {0} chance{1} left, please guess a letter:", guesses, guesses != 1 ? 's' : null);
             char guessedLetter = char.Parse(Console.ReadLine());
 
             // Iterate through the answer to check if any letter are correct
