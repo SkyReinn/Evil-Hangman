@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\David Wang\\Desktop\\Projects\\Evil-Hangman\\EvilHangman\\EvilHangman.csproj": {}
+    "C:\\Users\\David Wang\\Desktop\\Projects\\Evil-Hangman\\EvilHangman\\EvilHangman.csproj": {}
   },
   "projects": {
-    "c:\\Users\\David Wang\\Desktop\\Projects\\Evil-Hangman\\EvilHangman\\EvilHangman.csproj": {
+    "C:\\Users\\David Wang\\Desktop\\Projects\\Evil-Hangman\\EvilHangman\\EvilHangman.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\David Wang\\Desktop\\Projects\\Evil-Hangman\\EvilHangman\\EvilHangman.csproj",
+        "projectUniqueName": "C:\\Users\\David Wang\\Desktop\\Projects\\Evil-Hangman\\EvilHangman\\EvilHangman.csproj",
         "projectName": "EvilHangman",
-        "projectPath": "c:\\Users\\David Wang\\Desktop\\Projects\\Evil-Hangman\\EvilHangman\\EvilHangman.csproj",
+        "projectPath": "C:\\Users\\David Wang\\Desktop\\Projects\\Evil-Hangman\\EvilHangman\\EvilHangman.csproj",
         "packagesPath": "C:\\Users\\David Wang\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\David Wang\\Desktop\\Projects\\Evil-Hangman\\EvilHangman\\obj\\",
+        "outputPath": "C:\\Users\\David Wang\\Desktop\\Projects\\Evil-Hangman\\EvilHangman\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\David Wang\\AppData\\Roaming\\NuGet\\NuGet.Config"

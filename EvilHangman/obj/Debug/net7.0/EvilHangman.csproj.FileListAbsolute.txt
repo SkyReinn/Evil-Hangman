@@ -1,0 +1,14 @@
+C:\Users\David Wang\Desktop\Projects\Evil-Hangman\EvilHangman\bin\Debug\net7.0\EvilHangman.exe
+C:\Users\David Wang\Desktop\Projects\Evil-Hangman\EvilHangman\bin\Debug\net7.0\EvilHangman.deps.json
+C:\Users\David Wang\Desktop\Projects\Evil-Hangman\EvilHangman\bin\Debug\net7.0\EvilHangman.runtimeconfig.json
+C:\Users\David Wang\Desktop\Projects\Evil-Hangman\EvilHangman\bin\Debug\net7.0\EvilHangman.dll
+C:\Users\David Wang\Desktop\Projects\Evil-Hangman\EvilHangman\bin\Debug\net7.0\EvilHangman.pdb
+C:\Users\David Wang\Desktop\Projects\Evil-Hangman\EvilHangman\obj\Debug\net7.0\EvilHangman.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\David Wang\Desktop\Projects\Evil-Hangman\EvilHangman\obj\Debug\net7.0\EvilHangman.AssemblyInfoInputs.cache
+C:\Users\David Wang\Desktop\Projects\Evil-Hangman\EvilHangman\obj\Debug\net7.0\EvilHangman.AssemblyInfo.cs
+C:\Users\David Wang\Desktop\Projects\Evil-Hangman\EvilHangman\obj\Debug\net7.0\EvilHangman.csproj.CoreCompileInputs.cache
+C:\Users\David Wang\Desktop\Projects\Evil-Hangman\EvilHangman\obj\Debug\net7.0\EvilHangman.dll
+C:\Users\David Wang\Desktop\Projects\Evil-Hangman\EvilHangman\obj\Debug\net7.0\refint\EvilHangman.dll
+C:\Users\David Wang\Desktop\Projects\Evil-Hangman\EvilHangman\obj\Debug\net7.0\EvilHangman.pdb
+C:\Users\David Wang\Desktop\Projects\Evil-Hangman\EvilHangman\obj\Debug\net7.0\EvilHangman.genruntimeconfig.cache
+C:\Users\David Wang\Desktop\Projects\Evil-Hangman\EvilHangman\obj\Debug\net7.0\ref\EvilHangman.dll
