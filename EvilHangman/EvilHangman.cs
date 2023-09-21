@@ -7,7 +7,7 @@ public class EvilHangman
     public static void Hangman()
     {
         // Define variables
-        string path = @"C:\Users\David Wang\Desktop\Projects\Evil-Hangman\EvilHangman\dictionary.txt";
+        string path = Directory.GetCurrentDirectory() + @"\EvilHangman\dictionary.txt";
         List<string> dictionaryWords = new List<string>();
         List<string> words = new List<string>();
         List<char> guessedWord = new List<char>();
