@@ -1,23 +1,31 @@
 #nullable disable
+using System.Text;
+
 
 public class EvilHangman
 {
+    // Define global variables
+    public static string path = Directory.GetCurrentDirectory() + @"\EvilHangman\";
+    public static List<string> dictionaryWords = new List<string>();
+    public static List<string> words = new List<string>();
+    public static int guesses = 7;
+    public static int wordLength;
 
-    // Normal hangman
-    public static void Hangman()
+
+    // Why the heck is string read-only in c#
+    public static string ReplaceAtIndex(string str, int index, char c)
     {
-        // Define variables
-        string path = Directory.GetCurrentDirectory() + @"\EvilHangman\dictionary.txt";
-        List<string> dictionaryWords = new List<string>();
-        List<string> words = new List<string>();
-        List<char> guessedWord = new List<char>();
-        var wordLength = 0;
-        var guesses = 7;
-        string answer;
-        bool win = false;
+        StringBuilder sb = new StringBuilder(str);
+        sb[index] = c;
+        return sb.ToString();
+    }
 
+
+    // Initialize a word bank containing all words of a certain length
+    public static void InitializeWords(string file)
+    {
         // Read dictionary words
-        using (StreamReader sr = File.OpenText(path))
+        using (StreamReader sr = File.OpenText(path + file))
         {
             string s = "";
             while((s = sr.ReadLine()) != null)
@@ -27,7 +35,7 @@ public class EvilHangman
         }
 
         // Prompt player to enter word length
-        Console.WriteLine("Welcome to the game of hangman!\nPlease enter your word length:");
+        Console.WriteLine("Welcome to the game of Hangman!\nPlease enter your word length:");
         wordLength = int.Parse(Console.ReadLine());
 
         // Select words from dictionary words
@@ -38,22 +46,28 @@ public class EvilHangman
                 words.Add(word);
             }
         }
+    }
 
-        // Select a random word from words (temporary)
-        var random = new Random();
-        answer = words[random.Next(words.Count)];
 
-        // Initialize guessed word
+    // Main game function
+    public static void Hangman()
+    {
+        // Define variables
+        List<char> guessedWord = new List<char>();
+        string answer = "";
+        bool win = false;
+
+        // Initialize guessed word & answer
         for(var i=0;i<wordLength;i++)
-        {
             guessedWord.Add('_');
-        }
+        for(var i=0;i<wordLength;i++)
+            answer += '_';
 
-        // Guessing
+        // Game loop
         while(guesses != 0)
         {
             // Prompt player to guess a letter
-            Console.WriteLine("You have {0} chance{1} left, please guess a letter:", guesses, guesses != 1 ? 's' : null);
+            Console.WriteLine("You have {0} guess{1} left, please guess a letter:", guesses, guesses != 1 ? "es" : null);
             char guessedLetter = char.Parse(Console.ReadLine());
 
             // Iterate through the answer to check if any letter are correct
@@ -64,6 +78,9 @@ public class EvilHangman
                     guessedWord[i] = guessedLetter;
                 }
             }
+
+            // Find the answer pattern with the most words
+            answer = EvilAlgorithm(guessedLetter, new string(guessedWord.ToArray()));
 
             // Check if the answer is guessed correctly
             bool flag = true;
@@ -91,10 +108,82 @@ public class EvilHangman
             guesses--;
         }
 
-        // Print results
+        // Display results
         if(win == true)
             Console.WriteLine("Congratulations! You have correctly guessed the word.");
         else
-            Console.WriteLine("You lost, the answer is {0}.", answer);
+        {
+            // Choose a random word as the answer from the remaining words
+            var random = new Random();
+            var ans = random.Next(words.Count);
+            Console.Write("You lost, the answer is {0}", words[ans]);
+        }
+    }
+
+
+    // Evil Algorithm
+    public static string EvilAlgorithm(char guessedLetter, string guessedWord)
+    {
+        // Define the dictionary
+        Dictionary<string, List<string>> dictionary = new Dictionary<string, List<string>>();
+
+        // Loop through each word
+        foreach(var word in words)
+        {
+            // Check if the word pattern matches letters already guessed
+            bool flag = true;
+            for(var i=0;i<wordLength;i++)
+                if(guessedWord[i] != '_')
+                    if(guessedWord[i] != word[i])
+                        flag = false;
+
+            // If the pattern matches
+            if(flag == true)
+            {
+                // Create a new pattern based on the word
+                string pattern = guessedWord;
+                for(var i=0;i<wordLength;i++)
+                    if(word[i] == guessedLetter)
+                        pattern = ReplaceAtIndex(pattern, i, guessedLetter);
+
+                // If the pattern already exists, add the word
+                if(dictionary.Keys.Contains(pattern))
+                {
+                    List<string> temp = dictionary[pattern];
+                    temp.Add(word);
+                    dictionary[pattern] = temp;
+                }
+
+                // If not, create a new key then add the word
+                else
+                {
+                    List<string> temp = new List<string> {word};
+                    dictionary.Add(pattern, temp);
+                }
+            }
+        }
+
+        // Find the pattern in the dictionary that contains the most words
+        var max = 0;
+        string answer = guessedWord;
+        foreach(var key in dictionary.Keys)
+        {
+            // Debugging
+            Console.WriteLine("There are {0} words that fit the pattern '{1}'",dictionary[key].Count, key);
+            
+            if(dictionary[key].Count > max)
+            {
+                max = dictionary[key].Count;
+                answer = key;
+            }
+        }
+
+        // Delete all the words that match the other patterns from total words
+        foreach(var key in dictionary.Keys)
+            if(key != answer)
+                foreach(var word in dictionary[key])
+                    words.Remove(word);
+
+        return answer;
     }
 }
